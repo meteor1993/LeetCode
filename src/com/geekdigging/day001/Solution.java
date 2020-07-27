@@ -31,8 +31,9 @@ public class Solution {
      */
     public int[] twoSum_1(int[] nums, int target) {
         for (int i = 0; i < nums.length; i++) {
-            for (int j = 0; j < nums.length; j++) {
-                if (nums[j] == target - nums[i]) {
+            int temp = target - nums[i];
+            for (int j = i + 1; j < nums.length; j++) {
+                if (nums[j] == temp) {
                     return new int[]{i, j};
                 }
             }
@@ -88,7 +89,7 @@ public class Solution {
         int target = 6;
 
         Solution solution = new Solution();
-        int[] ints = solution.twoSum_2(nums, target);
+        int[] ints = solution.twoSum_1(nums, target);
         System.out.println(Arrays.toString(ints));
     }
 }

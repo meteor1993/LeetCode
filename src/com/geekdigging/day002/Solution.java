@@ -45,10 +45,24 @@ public class Solution {
         return res;
     }
 
+    public int reverse_1(int x) {
+        int res = 0;
+        while (x != 0) {
+
+            if (res > 214748364 || res < -214748364) {
+                return 0;
+            }
+
+            res = res * 10 + x % 10;
+            x /= 10;
+        }
+        return res;
+    }
+
     
 
     public static void main(String[] args) {
         Solution solution = new Solution();
-        System.out.println(solution.reverse(-1463847412));
+        System.out.println(solution.reverse_1(1463847412));
     }
 }

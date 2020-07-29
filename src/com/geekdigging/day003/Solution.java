@@ -26,10 +26,30 @@ package com.geekdigging.day003;
  * Description:
  */
 public class Solution {
+
+    // 直接用算法解
     public boolean isPalindrome(int x) {
+        // 先做极限情况判断
         if (x < 0 || (x % 10 == 0 && x != 0)) return false;
 
-        return true;
+        int revertedNumber = 0;
+
+        // 一直循环到 revertedNumber 大于或者等于 x
+        while (x > revertedNumber) {
+            revertedNumber = revertedNumber * 10 + x % 10;
+            x /= 10;
+        }
+
+        return revertedNumber == x || x == revertedNumber / 10;
+    }
+
+    // 转字符串的解法
+    public boolean isPalindrome_1(int x) {
+        // 先做极限情况判断
+        if (x < 0 || (x % 10 == 0 && x != 0)) return false;
+
+        StringBuilder stringBuilder = new StringBuilder(String.valueOf(x));
+        return stringBuilder.toString().equals(stringBuilder.reverse().toString());
     }
 
     public static void main(String[] args) {

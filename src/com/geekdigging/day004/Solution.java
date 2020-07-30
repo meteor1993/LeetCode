@@ -1,5 +1,8 @@
 package com.geekdigging.day004;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * Created with IntelliJ IDEA.
  *
@@ -52,14 +55,26 @@ package com.geekdigging.day004;
  */
 public class Solution {
     public int romanToInt(String s) {
-        // 定义结果
+        // 定义返回结果
         int sum = 0;
 
+        int preNum = getValue(s.charAt(0));
 
+        for (int i = 1; i < s.length(); i++) {
+            int num = getValue(s.charAt(i));
 
+            if (preNum < num) {
+                sum -= preNum;
+            } else {
+                sum += preNum;
+            }
 
+            preNum = num;
+        }
 
-        return 0;
+        sum += preNum;
+
+        return sum;
     }
 
     private int getValue(char ch) {
@@ -75,8 +90,41 @@ public class Solution {
         }
     }
 
+    // 放入 hash 表
+    public int romanToInt_1(String s) {
+        Map<Character, Integer> map = new HashMap<>();
+        map.put('I', 1);
+        map.put('V', 5);
+        map.put('X', 10);
+        map.put('L', 50);
+        map.put('C', 100);
+        map.put('D', 500);
+        map.put('M', 1000);
+
+        // 定义返回结果
+        int sum = 0;
+
+        int preNum = map.get(s.charAt(0));
+
+        for (int i = 1; i < s.length(); i++) {
+            int num = map.get(s.charAt(i));
+
+            if (preNum < num) {
+                sum -= preNum;
+            } else {
+                sum += preNum;
+            }
+
+            preNum = num;
+        }
+
+        sum += preNum;
+
+        return sum;
+    }
+
     public static void main(String[] args) {
         Solution solution = new Solution();
-        solution.romanToInt("LVIII");
+        System.out.println(solution.romanToInt_1("III"));
     }
 }

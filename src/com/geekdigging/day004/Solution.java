@@ -52,6 +52,13 @@ package com.geekdigging.day004;
  */
 public class Solution {
     public int romanToInt(String s) {
+        // 定义结果
+        int sum = 0;
+
+
+
+
+
         return 0;
     }
 

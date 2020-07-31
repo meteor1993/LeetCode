@@ -66,9 +66,76 @@ public class Solution {
         return strs[0];
     }
 
+    // 分治方案
+    public String longestCommonPrefix_2(String[] strs) {
+        if (strs.length == 0) {
+            return "";
+        } else {
+            return longestCommonPrefix(strs, 0, strs.length - 1);
+        }
+    }
+
+    public String longestCommonPrefix(String[] strs, int start, int end) {
+        if (start == end) {
+            return strs[start];
+        } else {
+            int mid = (end - start) / 2 + start;
+            String lcpLeft = longestCommonPrefix(strs, start, mid);
+            String lcpRight = longestCommonPrefix(strs, mid + 1, end);
+            return commonPrefix(lcpLeft, lcpRight);
+        }
+    }
+
+    public String commonPrefix(String lcpLeft, String lcpRight) {
+        int minLength = Math.min(lcpLeft.length(), lcpRight.length());
+        for (int i = 0; i < minLength; i++) {
+            if (lcpLeft.charAt(i) != lcpRight.charAt(i)) {
+                return lcpLeft.substring(0, i);
+            }
+        }
+        return lcpLeft.substring(0, minLength);
+    }
+
+    // 二分查找
+    public String longestCommonPrefix_3(String[] strs) {
+        if (strs.length == 0) return "";
+        // 先获取最小长度
+        int minLength = Integer.MAX_VALUE;
+        for (String str : strs) {
+            minLength = Math.min(minLength, str.length());
+        }
+
+        // 定义变量，开始二分法
+        int low = 0, high = minLength;
+        while (low < high) {
+            // 获取中间点
+            int mid = (high - low + 1) / 2 + low;
+            if (isCommonPrefix(strs, mid)) {
+                low = mid;
+            } else {
+                high = mid - 1;
+            }
+        }
+        return strs[0].substring(0, low);
+    }
+
+    public Boolean isCommonPrefix(String[] strs, int length) {
+        // 先获取前一半要比较的字符串
+        String str0 = strs[0].substring(0, length);
+        for (int i = 1; i < strs.length; i++) {
+            for (int j = 0; j < length; j++) {
+                // 按字符进行判断，如果有不一样的字符直接返回 false
+                if (str0.charAt(j) != strs[i].charAt(j)) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
     public static void main(String[] args) {
         Solution solution = new Solution();
-        String[] strs = {"flower","flow","flight"};
-        System.out.println(solution.longestCommonPrefix_1(strs));
+        String[] strs = {"aaa","aa","aaa"};
+        System.out.println(solution.longestCommonPrefix_2(strs));
     }
 }

@@ -42,7 +42,7 @@ public class Solution {
     public int searchInsert_1(int[] nums, int target) {
         int n = nums.length;
         int left = 0, right = n - 1, ans = n;
-        while (left < right) {
+        while (left <= right) {
             int mid = ((right - left) >> 1) + left;
             if (target <= nums[mid]) {
                 ans = mid;

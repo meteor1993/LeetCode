@@ -17,13 +17,18 @@ package com.geekdigging.day012;
 public class Solution {
 
     public int maxSubArray(int[] nums) {
+        // 定义前 k -1 项最大和 pre 与最大和 maxAns
         int pre = 0, maxAns = nums[0];
         for (int i = 0; i < nums.length; i++) {
+            // 获取前 k -1 项最大和（）
             pre = Math.max(pre + nums[i], nums[i]);
+            // 比较前 k -1 项最大和与当前最大和
             maxAns = Math.max(maxAns, pre);
         }
         return maxAns;
     }
+    
+    
 
     public static void main(String[] args) {
         Solution solution = new Solution();

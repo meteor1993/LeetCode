@@ -11,4 +11,8 @@
 | 7    | [「每日一道 LeetCode (7)：合并两个有序链表」](https://mp.weixin.qq.com/s/Ots5THD4nT_UBdVi_caEDw) | 简单 |
 | 8    | [「每日一道 LeetCode (8)：删除排序数组中的重复项和移除元素」](https://mp.weixin.qq.com/s/7F71F6JI2T3qiXxJ7Eh9nQ) | 简单 |
 | 9    | [「每日一道 LeetCode (9)：实现 strStr()」](https://mp.weixin.qq.com/s/Lb59dgHcLSNvDfsjwhvoCw) | 简单 |
+| 10   | [「每日一道 LeetCode (10)：搜索插入位置」](https://mp.weixin.qq.com/s/awKYb2OGU2HCZOajKuhPWQ) | 简单 |
+| 11   | [「每日一道 LeetCode (11)：外观数列」](https://mp.weixin.qq.com/s/CZUBS31jSP6mJGJhp2VmLw) | 简单 |
+| 12   | [「每日一道 LeetCode (12)：最大子序和」](https://mp.weixin.qq.com/s/FMUPEkpeW7g9ROSVHPhR7Q) | 简单 |
+| 13   | [「每日一道 LeetCode (13)：最后一个单词的长度」](https://mp.weixin.qq.com/s/Dl5INPs78OKwV2P1jbTgYg) | 简单 |
 

@@ -34,13 +34,32 @@ public class Solution {
         int left = 0, right = x, ans = -1;
         while (left <= right) {
             int mid = left + (right - left) / 2;
-            if (mid * mid <= x) {
+            if ((long) mid * mid <= x) {
                 ans = mid;
-                right =
+                left = mid + 1;
             } else {
-
+                right = mid - 1;
             }
         }
         return ans;
+    }
+
+    // 牛顿迭代
+    public int mySqrt_2(int x) {
+        if (x == 0) return 0;
+        double C = x, x0 = x;
+        while (true) {
+            double xi = 0.5 * (x0 + C / x0);
+            if (Math.abs(x0 - xi) < 1e-7) {
+                break;
+            }
+            x0 = xi;
+        }
+        return (int) x0;
+    }
+
+    public static void main(String[] args) {
+        Solution solution = new Solution();
+        System.out.println(solution.mySqrt_1(1586277523));
     }
 }

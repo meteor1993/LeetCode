@@ -35,4 +35,11 @@ public class Solution {
         }
         return r;
     }
+
+    public int climbStairs_1(int n) {
+        double sqrt5 = Math.sqrt(5);
+        // 题目下标从 0 开始,因此求 n + 1
+        double fibn = Math.pow((1 + sqrt5) / 2, n + 1) - Math.pow((1 - sqrt5) / 2, n + 1);
+        return (int)(fibn / sqrt5);
+    }
 }

@@ -27,6 +27,7 @@ import java.util.*;
  *
  */
 public class Solution {
+    // 顺序思维操作 耗时 2ms
     public List<List<Integer>> levelOrderBottom(TreeNode root) {
         if (root == null) return new ArrayList<>();
 
@@ -47,12 +48,8 @@ public class Solution {
                 TreeNode node = queue.poll();
                 // 将这一层的所有节点放到 list 中
                 list.add(node.val);
-                if (node.left != null) {
-                    queue.offer(node.left);
-                }
-                if (node.right != null) {
-                    queue.offer(node.right);
-                }
+                if (node.left != null) queue.offer(node.left);
+                if (node.right != null) queue.offer(node.right);
                 size--;
             }
             // 将列表当道栈中
@@ -64,6 +61,29 @@ public class Solution {
             result.add(stack.pop());
         }
 
+        return result;
+    }
+
+    // 优化代码，不适用栈，直接使用 list.add 方法，耗时 1ms
+    public List<List<Integer>> levelOrderBottom_1(TreeNode root) {
+        List<List<Integer>> result = new LinkedList<>();
+        if (root == null) return result;
+
+        Queue<TreeNode> queue = new LinkedList<>();
+        queue.offer(root);
+
+        while (!queue.isEmpty()) {
+            int size = queue.size();
+            List<Integer> list = new ArrayList<>();
+            while (size > 0) {
+                TreeNode node = queue.poll();
+                list.add(node.val);
+                if (node.left != null) queue.offer(node.left);
+                if (node.right != null) queue.offer(node.right);
+                size--;
+            }
+            result.add(0, list);
+        }
         return result;
     }
 }

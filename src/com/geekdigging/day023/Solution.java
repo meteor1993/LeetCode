@@ -35,13 +35,17 @@ public class Solution {
         Queue<TreeNode> queue = new LinkedList<>();
         queue.offer(root);
 
+        // 新增一个数据结构，栈
         Stack<List<Integer>> stack = new Stack<>();
 
+        // 外层循环，每次循环都是一层
         while (!queue.isEmpty()) {
             int size = queue.size();
             List<Integer> list = new ArrayList<>();
+            // 循环这一层的所有节点
             while (size > 0) {
                 TreeNode node = queue.poll();
+                // 将这一层的所有节点放到 list 中
                 list.add(node.val);
                 if (node.left != null) {
                     queue.offer(node.left);
@@ -51,9 +55,11 @@ public class Solution {
                 }
                 size--;
             }
+            // 将列表当道栈中
             stack.push(list);
         }
 
+        // 将栈中数据取出来放到列表中
         while (!stack.isEmpty()) {
             result.add(stack.pop());
         }
